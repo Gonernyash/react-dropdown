@@ -2,7 +2,8 @@
     padding: 0 8px;
     border: 1px solid #f2f2f2;
     border-top: 1px solid #eeeeee;
-    height: 24px;
+    width: inherit;
+    height: 26px;
 }
 
 .dropdown-input {
