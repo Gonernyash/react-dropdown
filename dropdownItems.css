@@ -1,0 +1,18 @@
+.dropdown-item {
+    display: flex;
+    flex-direction: row;
+    padding: 2px 6px 1.7px 6px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-list > .dropdown-item:last-child {
+    margin-bottom: 7px;
+}
+
+.dropdown-item-title {
+    line-height: 1.5;
+    pointer-events: none;
+}
