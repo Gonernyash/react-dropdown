@@ -1,38 +1,5 @@
 import React, { Component } from "react";
-import "./dropdownItems.css";
-const importAll = (i) => i.keys().map(i);
-const importImages = importAll(require.context("./flags", false, /.*\.svg$/));
-
-class DropdownItem extends Component {
-    constructor(props) {
-        super(props);
-
-        this.images = importImages.map((item) => {
-            item = item.slice(14);
-            item = item.slice(0, -13);
-            return item + ".svg";
-          });
-
-        this.i = this.images.indexOf(this.props.img);
-    }
-
-  render() {
-
-    const imgStyle = {
-      width: "13px",
-      heigth: "13px",
-      marginRight: "7px",
-      pointerEvents: "none",
-    };
-
-    return (
-      <div className="dropdown-item" data-code={this.props.code}>
-        <img src={importImages[this.i]} alt="" style={imgStyle} />
-        <div className="dropdown-item-title">{this.props.title}</div>
-      </div>
-    );
-  }
-}
+import DropdownItem from "./dropdownItem";
 
 class DropdownItemsContainer extends Component {
   render() {

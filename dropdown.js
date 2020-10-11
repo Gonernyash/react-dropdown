@@ -7,7 +7,7 @@ class Dropdown extends Component {
     render() {
         return (
             <div className='dropdown'>
-                <DropdownMain />
+                <DropdownMain /> 
                 <DropdownList />
             </div>
         );

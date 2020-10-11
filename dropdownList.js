@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import "./dropdownList.css";
-import DropdownItemsContainer from "./dropdownItems"
+import DropdownItemsContainer from "./dropdownItemsContainer";
+import DropdownRecentContainer from "./dropdownRecentContainer";
 
 class DropdownList extends Component {
     render() {
         return(
             <div className="dropdown-list dropdown-list--toggled">
-                {/*<DropdownRecentContainer items={[0, 1, 2, 3, 4, 5]}/>*/}
+                {/* <DropdownRecentContainer /> */}
                 <DropdownItemsContainer />
             </div>
         );
