@@ -7,7 +7,7 @@ class DropdownList extends Component {
     render() {
         return(
             <div className="dropdown-list dropdown-list--toggled">
-                {/* <DropdownRecentContainer /> */}
+                <DropdownRecentContainer />
                 <DropdownItemsContainer />
             </div>
         );
