@@ -2,7 +2,7 @@
     width: inherit;
     height: 0;
     max-height: 144px;
-    overflow: hidden;
+    overflow: auto;
     position: absolute;
     top: 25px;
     left: 0;
@@ -16,7 +16,6 @@
     border-top: 0;
     border-right: 0;
     height: 75vh;
-    overflow-y: auto;
 }
 
 .dropdown-list::-webkit-scrollbar {
