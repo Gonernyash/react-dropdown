@@ -2,6 +2,9 @@
     width: inherit;
     height: 0;
     max-height: 144px;
+    border: 1px solid transparent;
+    border-top: 0;
+    border-right: 0;
     overflow: auto;
     position: absolute;
     top: 25px;
@@ -12,9 +15,7 @@
 }
 
 .dropdown-list--toggled {
-    border: 1px solid #f2f2f2;
-    border-top: 0;
-    border-right: 0;
+    border-color: #f2f2f2;
     height: 75vh;
 }
 
