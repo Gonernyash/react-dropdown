@@ -6,7 +6,8 @@ class ToggleContextProvider extends Component {
         super(props);
 
         this.state = {
-            isToggled: false
+            isToggled: false,
+            selectedItem: ""
         }
 
         this.toggleState = () => {
@@ -16,11 +17,25 @@ class ToggleContextProvider extends Component {
                 }
             })
         }
+
+        this.selectItem = (target) => {
+            this.setState(() => {
+                return {
+                    selectedItem: target.innerText
+                }
+            })
+        }
     }
 
     render() {
         return (
-            <Provider value={{isToggled: this.state.isToggled, toggleState:this.toggleState}}>
+            <Provider value=
+            {{
+                isToggled: this.state.isToggled,
+                toggleState: this.toggleState,
+                selectItem: this.selectItem,
+                selectedItem: this.state.selectedItem 
+            }}>
                 {this.props.children}
             </Provider>
         );

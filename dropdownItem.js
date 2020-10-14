@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./dropdownItem.css";
 import flags from "./dropdownImageLoader";
+import {ToggleContextConsumer} from "./toggleContext";
 
 class DropdownItem extends Component {
     constructor(props) {
@@ -20,10 +21,14 @@ class DropdownItem extends Component {
           };
 
         return (
-            <div className="dropdown-item" data-code={this.props.code}>
-                <img src={this.state.imgPath} alt="" style={imgStyle} />
-                <div className="dropdown-item-title">{this.props.title}</div>
-            </div>
+            <ToggleContextConsumer>
+                {context => (
+                    <div className="dropdown-item" data-code={this.props.code} onClick={(e) => context.selectItem(e.target)}>
+                        <img src={this.state.imgPath} alt="" style={imgStyle} />
+                        <div className="dropdown-item-title">{this.props.title}</div>
+                    </div>
+                )}
+            </ToggleContextConsumer>
         );
     }
 }
