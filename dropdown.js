@@ -8,53 +8,53 @@ class Dropdown extends Component {
         super(props);
 
         this.listClose = () => {
-            this.dropdownList.classList.remove('dropdown-list--toggled');
-            this.dropdownIcon.classList.remove('dropdown-icon--toggled');
+            this.list.classList.remove('dropdown-list--toggled');
+            this.icon.classList.remove('dropdown-icon--toggled');
         }
         this.listOpen = () => {
-            this.dropdownList.classList.add('dropdown-list--toggled');
-            this.dropdownIcon.classList.add('dropdown-icon--toggled');
+            this.list.classList.add('dropdown-list--toggled');
+            this.icon.classList.add('dropdown-icon--toggled');
         }
         this.listToggle = () => {
-            this.dropdownList.classList.toggle('dropdown-list--toggled');
-            this.dropdownIcon.classList.toggle('dropdown-icon--toggled');
+            this.list.classList.toggle('dropdown-list--toggled');
+            this.icon.classList.toggle('dropdown-icon--toggled');
         }
         this.selectItem = (event) => {
-            this.dropdownInput.value = event.target.innerText;
+            this.input.value = event.target.innerText;
             this.itemsShow();
             this.listClose();
         }
         this.itemsShow = () => {
-            this.dropdownItems.forEach((item) => item.classList.remove('none'));
-            this.dropdownRecent.classList.remove('none');
+            this.items.forEach((item) => item.classList.remove('none'));
+            this.recent.classList.remove('none');
         }
         this.searchItem = (event) => {
             const request = event.target.value.toLowerCase();
-            this.dropdownItems.forEach((item) => {
+            this.items.forEach((item) => {
                 item.classList.remove('none');
                 if (request !== '') {
-                    this.dropdownRecent.classList.add('none');
+                    this.recent.classList.add('none');
                     let result = item.innerText.toLowerCase().search(request);
                     if (result === -1) item.classList.add('none');
                 } else {
-                    this.dropdownRecent.classList.remove('none')
+                    this.recent.classList.remove('none')
                 }
             })
         }
     }
 
     componentDidMount() {
-        this.dropdownList = document.querySelector('#dropdown-list');
-        this.dropdownButton = document.querySelector('#dropdown-button')
-        this.dropdownIcon = document.querySelector('#dropdown-icon');
-        this.dropdownInput = document.querySelector('#dropdown-input');
-        this.dropdownRecent = document.querySelector('#dropdown-recent');
-        this.dropdownItems = document.querySelectorAll('#dropdown-item');
+        this.list = document.querySelector('#dropdown-list');
+        this.button = document.querySelector('#dropdown-button')
+        this.icon = document.querySelector('#dropdown-icon');
+        this.input = document.querySelector('#dropdown-input');
+        this.recent = document.querySelector('#dropdown-recent');
+        this.items = document.querySelectorAll('#dropdown-item');
         
         
-        this.dropdownButton.addEventListener('click', this.listToggle, false);
-        this.dropdownInput.addEventListener('input', this.searchItem, false);
-        this.dropdownItems.forEach((item) => item.addEventListener('click', this.selectItem, false));
+        this.button.addEventListener('click', this.listToggle, false);
+        this.input.addEventListener('input', this.searchItem, false);
+        this.items.forEach((item) => item.addEventListener('click', this.selectItem, false));
     }
 
     render() {
