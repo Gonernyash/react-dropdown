@@ -58,6 +58,7 @@ class DropdownMenu {
     open() {
         this.input.value = '';
         this.input.focus();
+        this.list.scroll(0, 0);
         this.list.classList.add('dropdown-list--toggled');
         this.icon.classList.add('dropdown-icon--toggled');
     }
@@ -120,7 +121,6 @@ class DropdownItems {
 
     recentUpdate(event, ref) {
         const target = event.target;
-        const parent = target.parentNode;
         let img = target.querySelector('img').getAttribute('src');
         img = img.slice(14);
         img = img.slice(0, -13);
@@ -130,12 +130,10 @@ class DropdownItems {
             title: target.querySelector('div[class="dropdown-item-title"]').innerText  
         }
         const newItem = <DropdownItem {...props} />
-        
+        const recentId = this.recentIndexOf(newItem, ref);
+
         ref.setState(prevState => {
-            if (parent.className === "dropdown-recent") {
-                const id = this.recentIndexOf(newItem, ref);
-                prevState.items.splice(id, 1);
-            }
+            if (recentId !== -1) prevState.items.splice(recentId, 1);
             prevState.items.unshift(newItem);
             const newState = prevState.items.slice(0, 6);
             return {
