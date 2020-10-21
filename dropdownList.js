@@ -11,9 +11,14 @@ class DropdownList extends Component {
     }
 
     render() {
-        return(
+        return this.props.isRecentEnabled ? 
+        (
             <div className="dropdown-list" id="dropdown-list">
                 <DropdownRecentContainer ref={this.recentContRef}/>
+                <DropdownItemsContainer />
+            </div>
+        ) : (
+            <div className="dropdown-list" id="dropdown-list">
                 <DropdownItemsContainer />
             </div>
         );

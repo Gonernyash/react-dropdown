@@ -12,10 +12,12 @@ class Dropdown extends Component {
     }
 
     componentDidMount() {
-        this.recentRef = this.listRef.current
-        .recentContRef.current
-        .recentRef.current;
-
+        if (this.props.isRecentEnabled) {
+            this.recentRef = this.listRef.current
+            .recentContRef.current
+            .recentRef.current;
+        }
+        
         this.menu = new DropdownMenu();
         
         this.menu.button.addEventListener('click', () => this.menu.toggle(), false);
@@ -23,7 +25,7 @@ class Dropdown extends Component {
         this.menu.input.addEventListener('focus',() => this.menu.open(), false);
         this.menu.items.all.forEach((item) => {
             item.addEventListener('click', (event) => this.menu.items.select(event), false);
-            item.addEventListener('click', (event) => this.menu.items.recentUpdate(event, this.recentRef), false);
+            if (this.props.isRecentEnabled) item.addEventListener('click', (event) => this.menu.items.recentUpdate(event, this.recentRef), false);
         });
         document.addEventListener('click', (event) => {
             const targetClass = event.target.className;
@@ -35,7 +37,7 @@ class Dropdown extends Component {
         return (
             <div className='dropdown'>
                 <DropdownMain />
-                <DropdownList ref={this.listRef}/>
+                <DropdownList isRecentEnabled={this.props.isRecentEnabled} ref={this.listRef}/>
             </div>
         );
     }
@@ -88,14 +90,14 @@ class DropdownItems {
         this.all.forEach((item) => {
             item.classList.remove('none');
         })
-        this.recent.classList.remove('none');
+        if (this.recent) this.recent.classList.remove('none');
     }
 
     hide() {
         this.all.forEach((item) => {
             item.classList.add('none');
         })
-        this.recent.classList.add('none');
+        if (this.recent) this.recent.classList.add('none');
     }
 
     search(event) {
