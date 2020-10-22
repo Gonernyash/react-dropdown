@@ -5,17 +5,8 @@ class DropdownRecent extends Component {
     constructor(props) {
         super(props);
 
-        const defaultItems = [
-            <DropdownItem code="RU" img="russia.svg" title="Russia" />,
-            <DropdownItem code="US" img="united-states-of-america.svg" title="United States" />,
-            <DropdownItem code="JP" img="japan.svg" title="Japan" />,
-            <DropdownItem code="CN" img="china.svg" title="China" />,
-            <DropdownItem code="FR" img="france.svg" title="France" />,
-            <DropdownItem code="DE" img="germany.svg" title="Germany" />
-        ]
-
         this.state = {
-            items:  defaultItems
+            items:  defaultData().map(data => <DropdownItem key={data.code} code={data.code} img={data.img} title={data.title} />)
         }
     }
 
@@ -24,6 +15,41 @@ class DropdownRecent extends Component {
             this.state.items
         );
     }
+}
+
+function defaultData() {
+    return [
+        {
+            code: "RU",
+            img: "russia.svg",
+            title: "Russia"
+        },
+        {
+            code: "US",
+            img: "united-states-of-america.svg",
+            title: "United States"
+        },
+        {
+            code: "JP",
+            img: "japan.svg",
+            title: "Japan"
+        },
+        {
+            code: "CN",
+            img: "china.svg",
+            title: "China"
+        },
+        {
+            code: "FR",
+            img: "france.svg",
+            title: "France"
+        },
+        {
+            code: "DE",
+            img: "germany.svg",
+            title: "Germany"
+        }
+    ]
 }
 
 export default DropdownRecent;

@@ -129,9 +129,9 @@ class DropdownItems {
         const props = {
             code: target.getAttribute('data-code'),
             img: img + '.svg',
-            title: target.querySelector('div[class="dropdown-item-title"]').innerText  
+            title: target.querySelector('div[class="dropdown-item-title"]').innerText 
         }
-        const newItem = <DropdownItem {...props} />
+        const newItem = <DropdownItem key={props.code} {...props} />
         const recentId = this.recentIndexOf(newItem, ref);
 
         ref.setState(prevState => {
