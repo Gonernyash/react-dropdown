@@ -3,10 +3,19 @@ import "./dropdown.css";
 import DropdownMain from "./dropdownMain";
 import DropdownList from "./dropdownList";
 import DropdownItem from "./dropdownItem";
+import dropdownImages from "./dropdownImageLoader";
 
 class Dropdown extends Component {
     constructor(props) {
         super(props);
+
+        this.getItemById = (id) => {
+            for (let i = 0; i < this.props.itemsData.length; i++) {
+                if (this.props.itemsData[i].id === id) return this.props.itemsData[i]
+            }
+            console.error("Error: can't find item with "+ id + " id");
+            return -1;
+        }
 
         this.listRef = React.createRef();
     }
@@ -25,7 +34,7 @@ class Dropdown extends Component {
         this.menu.input.addEventListener('focus',() => this.menu.open(), false);
         this.menu.items.all.forEach((item) => {
             item.addEventListener('click', (event) => this.menu.items.select(event), false);
-            if (this.props.isRecentEnabled) item.addEventListener('click', (event) => this.menu.items.recentUpdate(event, this.recentRef), false);
+            if (this.props.isRecentEnabled) item.addEventListener('click', (event) => this.menu.items.recentUpdate(event, this.recentRef, this), false);
         });
         document.addEventListener('click', (event) => {
             const targetClass = event.target.className;
@@ -37,7 +46,13 @@ class Dropdown extends Component {
         return (
             <div className='dropdown'>
                 <DropdownMain />
-                <DropdownList isRecentEnabled={this.props.isRecentEnabled} ref={this.listRef}/>
+                <DropdownList 
+                    itemsData={this.props.itemsData}
+                    itemStructure={this.props.itemStructure}
+                    isRecentEnabled={this.props.isRecentEnabled} 
+                    recentDefaultItems={this.props.recentDefaultItems.map(val => this.getItemById(val))}
+                    ref={this.listRef}
+                />
             </div>
         );
     }
@@ -121,17 +136,15 @@ class DropdownItems {
         return -1;
     }
 
-    recentUpdate(event, ref) {
+    recentUpdate(event, ref, self) {
         const target = event.target;
-        let img = target.querySelector('img').getAttribute('src');
-        img = img.slice(14);
-        img = img.slice(0, -13);
+        let imgValue = target.querySelector('img').getAttribute('src');
         const props = {
-            code: target.getAttribute('data-code'),
-            img: img + '.svg',
+            id: target.getAttribute('data-code'),
+            img: dropdownImages.getKey(imgValue),
             title: target.querySelector('div[class="dropdown-item-title"]').innerText 
         }
-        const newItem = <DropdownItem key={props.code} {...props} />
+        const newItem = <DropdownItem itemStructure={self.props.itemStructure} key={props.id} {...props} />
         const recentId = this.recentIndexOf(newItem, ref);
 
         ref.setState(prevState => {

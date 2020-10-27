@@ -8,18 +8,27 @@ class DropdownList extends Component {
         super(props);
 
         this.recentContRef = React.createRef();
+        this.itemsContainer = 
+        <DropdownItemsContainer 
+            itemsData={this.props.itemsData}
+            itemStructure={this.props.itemStructure}
+        />
     }
 
     render() {
         return this.props.isRecentEnabled ? 
         (
             <div className="dropdown-list" id="dropdown-list">
-                <DropdownRecentContainer ref={this.recentContRef}/>
-                <DropdownItemsContainer />
+                <DropdownRecentContainer 
+                    recentDefaultItems={this.props.recentDefaultItems} 
+                    itemStructure={this.props.itemStructure}
+                    ref={this.recentContRef}
+                />
+                {this.itemsContainer}
             </div>
         ) : (
             <div className="dropdown-list" id="dropdown-list">
-                <DropdownItemsContainer />
+                {this.itemsContainer}
             </div>
         );
     }
