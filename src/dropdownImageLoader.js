@@ -1,6 +1,6 @@
 class ImportImages {
     constructor() {
-        this.list = this.import(require.context("../images", false, /.*\.svg$/))
+        this.list = this.import(require.context("../icons", false, /.*\.svg$/))
     }
 
     import(request) {
