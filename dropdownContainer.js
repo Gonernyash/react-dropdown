@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Dropdown from './src/dropdown';
 
 import itemsData from './items.json'; // Getting array of items properties.
-import itemsIcons from './src/dropdownImageLoader';
+import itemsIcons from './dropdownIconsLoader'; // Loading icons
 
 //You are able to customize item as you want
 const itemStructure = (self) => {

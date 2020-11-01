@@ -3,7 +3,7 @@ import "./dropdown.css";
 import DropdownMain from "./dropdownMain";
 import DropdownList from "./dropdownList";
 import DropdownItem from "./dropdownItem";
-import dropdownImages from "./dropdownImageLoader";
+import dropdownImages from "../dropdownIconsLoader";
 
 class Dropdown extends Component {
     constructor(props) {
