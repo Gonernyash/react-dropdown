@@ -12,33 +12,24 @@ class Dropdown extends Component {
             for (let i = 0; i < this.props.itemsData.length; i++) {
                 if (this.props.itemsData[i].id === id) return this.props.itemsData[i]
             }
-            console.error("Error: can't find item with "+ id + " id");
+            console.error("Dropdown/Error/Recent-items-list: can't find item with "+ id + " id");
             return -1;
+        }
+
+        this.debugging = () => {
+            for (let prop in DropdownMenu) {
+                if (DropdownMenu[prop] === null) console.error("Dropdown/Error: Can't get '" + prop + "' component");
+            }
         }
 
         this.listRef = React.createRef();
     }
 
     componentDidMount() {
-        if (this.props.isRecentEnabled) {
-            this.recentRef = this.listRef.current
-            .recentContRef.current
-            .recentRef.current;
-        }
-        
-        this.menu = new DropdownMenu();
-        console.log(this.menu);
-        
-        this.menu.button.addEventListener('click', () => this.menu.toggle(), false);
-        this.menu.input.addEventListener('input', (event) => this.menu.items.search(event), false);
-        this.menu.input.addEventListener('focus',() => this.menu.open(), false);
-        this.menu.items.all.forEach((item) => {
-            item.addEventListener('click', (event) => this.menu.items.select(event), false);
-            if (this.props.isRecentEnabled) item.addEventListener('click', (event) => this.menu.items.recentUpdate(event, this.recentRef, this), false);
-        });
+        console.log(DropdownMenu);
         document.addEventListener('click', (event) => {
             const targetClass = event.target.className;
-            if (targetClass.slice(0, 8) !== 'dropdown') this.menu.close();
+            if (targetClass.slice(0, 8) !== 'dropdown') DropdownMenu.close();
         }, false);
     }
 

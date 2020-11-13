@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Dropdown from './src/dropdown';
+import menu from './src/DropdownMenu';
 
 // Getting array of items properties.
 import itemsData from './items.json'; //!!!Every item MUST HAVE the unique 'id' property
@@ -10,7 +11,7 @@ import itemsData from './items.json'; //!!!Every item MUST HAVE the unique 'id' 
 // Icons loading
 import itemsIcons from './dropdownIconsLoader'; //If you don't need icons you can delete this  
 
-//You are able to customize item as you want
+// You are able to customize item as you want
 const itemStructure = (self) => {
     const imgStyle = {
         width: "13px",
@@ -19,7 +20,9 @@ const itemStructure = (self) => {
         pointerEvents: "none",
     };
     return (
-        <div className="dropdown-item" data-code={self.props.id} id="dropdown-item">
+        <div 
+        /* !!!iportant*/ {...menu.itemProps(self)} /*!!!important */ 
+        className="dropdown-item" data-code={self.props.id} id="dropdown-item">
             <img src={itemsIcons.list[self.props.img]} alt="" style={imgStyle} />
             <div className="dropdown-item-title">{self.props.title}</div>
         </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import "./dropdownList.css";
 import DropdownItemsContainer from "./dropdownItemsContainer";
 import DropdownRecentContainer from "./dropdownRecentContainer";
+import menu from './DropdownMenu';
 
 class DropdownList extends Component {
     constructor(props) {
@@ -13,12 +14,18 @@ class DropdownList extends Component {
             itemsData={this.props.itemsData}
             itemStructure={this.props.itemStructure}
         />
+
+        this.listRef = React.createRef();
+    }
+
+    componentDidMount() {
+        menu.list = this.listRef.current;
     }
 
     render() {
         return this.props.isRecentEnabled ? 
         (
-            <div className="dropdown-list" id="dropdown-list">
+            <div className="dropdown-list" id="dropdown-list" ref={this.listRef}>
                 <DropdownRecentContainer 
                     recentDefaultItems={this.props.recentDefaultItems} 
                     itemStructure={this.props.itemStructure}
