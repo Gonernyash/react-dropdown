@@ -6,7 +6,15 @@ class DropdownRecent extends Component {
         super(props);
 
         this.state = {
-            items:  this.props.recentDefaultItems.map(data => <DropdownItem itemStructure={this.props.itemStructure} key={data.id} id={data.id} img={data.img} title={data.title} />)
+            items:  this.props.recentDefaultItems.map(data => 
+            <DropdownItem 
+                itemStructure={this.props.itemStructure} 
+                key={data.id} 
+                id={data.id} 
+                img={data.img} 
+                title={data.title}
+                isRecent={true}
+            />)
         }
     }
 

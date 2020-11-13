@@ -10,7 +10,7 @@ class DropdownMenu {
         this.recentComp = 'dfdsf';
         this.itemProps = (self) => {
             return {
-                'ref': self.itemRef,
+                'ref': self.getItem,
                 'onClick': (event) => {
                     const target = event.target;
                     this.selectItem(target);
@@ -93,7 +93,7 @@ class DropdownMenu {
             img: dropdownImages.getKey(imgSrc),
             title: target.querySelector('div[class="dropdown-item-title"]').innerText
         }
-        const newItem = <DropdownItem itemStructure={this.recentComp.props.itemStructure} key={props.id} {...props} />;
+        const newItem = <DropdownItem itemStructure={this.recentComp.props.itemStructure} key={props.id} {...props} isRecent={true} />;
         const recentId = this.recentIndexOf(newItem);
 
         this.recentComp.setState(prevState => {

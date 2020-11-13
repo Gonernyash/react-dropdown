@@ -6,17 +6,13 @@ class DropdownButton extends Component {
     constructor(props) {
         super(props);
 
-        this.iconRef = React.createRef(); 
-    }
-
-    componentDidMount() {
-        menu.icon = this.iconRef.current;
+        this.getIcon = (icon) => menu.icon = icon; 
     }
 
     render() {
         return(
             <button className='dropdown-button' id="dropdown-button" onClick={() => menu.toggle()}>
-                <div className="dropdown-icon" id="dropdown-icon" ref={this.iconRef}></div>
+                <div className="dropdown-icon" id="dropdown-icon" ref={this.getIcon}></div>
             </button>
         );
     }

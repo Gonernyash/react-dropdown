@@ -7,17 +7,13 @@ class DropdownMain extends Component {
     constructor(props) {
         super(props);
 
-        this.inputRef = React.createRef();
-    }
-
-    componentDidMount() {
-        menu.input = this.inputRef.current;
+        this.getInput = (input) => menu.input = input;
     }
 
     render() {
         return(
             <div className="dropdown-main">
-                <input className='dropdown-input' type="text" id="dropdown-input" ref={this.inputRef} onInput={() => menu.items.search()}></input>
+                <input className='dropdown-input' type="text" id="dropdown-input" ref={this.getInput} onInput={() => menu.items.search()}></input>
                 <DropdownButton />
             </div>
         );

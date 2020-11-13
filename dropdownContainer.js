@@ -47,6 +47,7 @@ class DropdownContainer extends Component {
         return (
             <>
                 <Dropdown
+                key={0}
                 itemsData={itemsData}
                 itemStructure={itemStructure} 
                 isRecentEnabled={isRecentListEnabled}

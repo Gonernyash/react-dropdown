@@ -27,6 +27,7 @@ class Dropdown extends Component {
 
     componentDidMount() {
         console.log(DropdownMenu);
+        this.debugging();
         document.addEventListener('click', (event) => {
             const targetClass = event.target.className;
             if (targetClass.slice(0, 8) !== 'dropdown') DropdownMenu.close();
