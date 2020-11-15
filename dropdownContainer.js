@@ -22,7 +22,7 @@ const itemStructure = (self) => {
     return (
         <div 
         /* !!!iportant*/ {...menu.itemProps(self)} /*!!!important */ 
-        className="dropdown-item" data-code={self.props.id} id="dropdown-item">
+        className="dropdown-item" data-code={self.props.id}>
             <img src={itemsIcons.list[self.props.img]} alt="" style={imgStyle} />
             <div className="dropdown-item-title">{self.props.title}</div>
         </div>

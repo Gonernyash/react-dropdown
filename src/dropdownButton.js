@@ -11,7 +11,7 @@ class DropdownButton extends Component {
 
     render() {
         return(
-            <button className='dropdown-button' id="dropdown-button" onClick={() => menu.toggle()}>
+            <button className='dropdown-button' onClick={() => menu.toggle()}>
                 <div className="dropdown-icon" id="dropdown-icon" ref={this.getIcon}></div>
             </button>
         );

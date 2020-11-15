@@ -20,7 +20,7 @@ class DropdownList extends Component {
     render() {
         if (this.props.isRecentEnabled) {
             return(
-                <div className="dropdown-list" id="dropdown-list" ref={this.getList}>
+                <div className="dropdown-list" ref={this.getList}>
                     <DropdownRecentContainer 
                      recentDefaultItems={this.props.recentDefaultItems} 
                         itemStructure={this.props.itemStructure}

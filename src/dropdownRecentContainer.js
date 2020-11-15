@@ -16,7 +16,7 @@ class DropdownRecentContainer extends Component {
 
     render() {
         return (
-            <div className="dropdown-recent" id="dropdown-recent">
+            <div className="dropdown-recent">
                 <DropdownRecent itemStructure={this.props.itemStructure} recentDefaultItems={this.props.recentDefaultItems} ref={this.recentCompRef}/>
             </div>
         );
