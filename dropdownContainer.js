@@ -13,15 +13,21 @@ import itemsIcons from './dropdownIconsLoader'; //If you don't need icons you ca
 
 // You are able to customize item as you want
 const itemStructure = (self) => {
+    const itemStyle = {
+        width: '100%',
+        height: 16.7,
+        padding: '2px 6px 1.7px 6px'
+    }
     const imgStyle = {
         width: "13px",
-        heigth: "13px",
+        height: "13px",
         marginRight: "7px",
         pointerEvents: "none",
     };
     return (
         <div 
-        /* !!!iportant*/ {...menu.itemProps(self)} /*!!!important */ 
+        /* !!!iportant*/ {...menu.itemProps(self)} /*!!!important */
+        style = {itemStyle} 
         className="dropdown-item" data-code={self.props.id}>
             <img src={itemsIcons.list[self.props.img]} alt="" style={imgStyle} />
             <div className="dropdown-item-title">{self.props.title}</div>
